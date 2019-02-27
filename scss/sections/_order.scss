@@ -1,0 +1,302 @@
+.order{
+  background-color: $dark;
+  background-image: url("../img/bg/bg-section7.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.order__title{
+  margin-bottom: rem(55px);
+  text-align: center;
+  line-height: 1.1;
+  @include tablet{
+    margin-bottom: 5%; 
+  }
+  @include ie{
+    @include tablet{
+      font-size: rem(36px);
+    }
+  }
+}
+
+.form{
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @include tablet{
+    flex-direction: column;
+    width: 74%;
+    justify-content: center;
+  }
+  @include phone{
+    width: 100%;
+  }
+  @include ie{
+    @include tablet{
+      width: 95%;
+      display: block;
+      &::before, &::after{
+        clear: both;
+      }
+    }
+  }
+}
+
+.form__col{
+  flex-basis: 50%;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @include ie{
+    display: block;
+    &::before, &::after{
+        clear: both;
+    }
+    @include tablet{
+      float: left;
+      width: 50%;
+      }
+    @include phone{
+      float: none;
+      width: 100%;
+    }
+    }
+}
+
+.form__block{
+  display: block;
+  padding: 0 rem(10px);
+  flex-grow: 1;
+}
+
+.form__block--large{
+  flex-basis: 100%;
+  @include ie{
+    width: 100%;
+  }
+}
+.form__block--middle{
+  flex-basis: 50%;
+  @include ie{
+    width: 50%;
+    float: left;
+  }
+}
+.form__block--small{
+  flex-basis: 25%;
+  @include phone{
+    flex-basis: 33.3%;
+    &:last-child{
+      display: none;
+    }
+  }
+  @include ie{
+    width: 25%;
+    float: left;
+    @include phone{
+    width: 33.3%;
+      &:last-child{
+        display: none;
+      }
+    }
+  }
+}
+
+.form__block--inline{
+  margin-bottom: rem(18px);
+  @include tablet{
+    margin-bottom: rem(14px);
+  }
+  @include phone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.form__label{
+  @extend %label;
+}
+
+.form__label--block{
+  display: block;
+  padding-bottom: rem(5px);
+}
+
+.form__label--inline{
+  display: inline-block;
+  padding-left: rem(5px);
+  vertical-align: middle;
+  margin-right: rem(20px);
+}
+
+.form__input{
+  @extend %input;
+  @include tablet{
+    height: rem(25px);
+    padding: rem(2.5px) rem(10px); 
+  }
+}
+
+.form__input--large{
+  height: rem(110px);
+  resize: none;
+  @include tablet{
+    height: rem(80px); 
+  }
+}
+
+.hidden-input{
+  display: none;
+}
+
+.form__radio{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  @include circle(rem(16px), $light);
+
+  &::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity $transition;
+
+    @include circle(rem(7px), $orange);
+
+    @include phone{
+      @include circle(rem(8px), $orange);
+    }
+  }
+}
+
+#yes:checked+.form__radio::before, #no:checked+.form__radio::before{
+  opacity: 1;
+}
+
+.form__checkbox{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  width: rem(15px);
+  height: rem(15px);
+
+  background: $light;
+
+  &::before{
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    background-image: url('../img/icons/checkmark.png');
+    background-repeat: no-repeat;
+    background-size: rem(11px) auto;
+    background-position: center;
+
+    opacity: 0;
+    transition: opacity $transition;
+  }
+}
+
+#call:checked+.form__checkbox::before{
+  opacity: 1;
+}
+
+.form__submit{
+  border: none;
+    &:focus, &:active{
+    outline: none;
+    text-decoration: underline;
+  }
+}
+
+.form__reset{
+  margin-left: rem(10px);
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: $btn-color;
+  font-size: rem($btn-size);
+  line-height: 1;
+
+  &:focus{
+    border: none;
+    outline: none;
+    color: $yellow;
+    text-decoration: underline;
+  }
+}
+
+.form__block--buttons{
+  @include phone{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.error{
+  border: 2px solid red;
+  background-color: $yellow;
+}
+
+.qtip-mystyle {
+  background-color: #ffffff !important;
+  border-color: red !important;
+  color: $dark !important;
+  font-size: 13px;
+}
+
+.message{
+  visibility: hidden;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: rem(20px);
+
+  width: rem(200px);
+  
+  background-color: $light;
+  border-radius: $border-radius;
+  box-shadow: 0 0 50px 5px $dark;
+}
+
+.message__text{
+  text-align: center;
+  margin-bottom: rem(20px);
+}
+
+.message__button{
+  border: none;
+  outline: none;
+  &:focus, &:active{
+    outline: none;
+    text-decoration: underline;
+  }
+}

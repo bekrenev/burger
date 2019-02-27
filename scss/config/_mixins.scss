@@ -1,0 +1,108 @@
+//responsive
+@function rem($px) {
+  @return $px / 16px+0rem;
+}
+
+@mixin circle($width, $color) {
+  width: $width;
+  height: $width;
+  border-radius: $width/2;
+  background-color: $color;
+}
+
+@mixin h1{
+  font-family: $h1-font;
+  font-weight: normal;
+  font-size: rem($h1-size);
+  text-transform: uppercase;
+}
+
+%button{
+  padding: rem(10px) rem(15px);
+  border-radius: $border-radius;
+  text-transform: uppercase;
+  color: $btn-color;
+  font-size: rem($btn-size);
+  line-height: 1;
+  transition: background-color $transition;
+}
+
+@mixin button($bg-color){
+  background-color: $bg-color;
+  &:hover{
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-indent: 100%;
+}
+
+%input{
+  height: rem(35px);
+  width: 100%;
+
+  padding: rem(5px) rem(20px);
+  margin-bottom: rem(15px);
+  border-radius: $border-radius;
+  border: 2px solid transparent;
+
+  font-weight: 200;
+  color: $dark;
+  text-align: left;
+
+  background-color: $light;
+  transition: border $transition;
+
+  &:focus{
+    outline: none;
+    border: 2px solid $yellow;
+  }
+}
+
+%label{
+  font-weight: 200;
+  line-height: 1.7;
+  color: $light;
+  text-align: left;
+}
+
+//media-запросы
+
+// 320-480px
+@mixin phone{
+  @media (max-width: $phone){
+    @content;
+  }
+}
+
+// 481-768px
+@mixin tablet{
+  @media (max-width: $tablet){
+    @content;
+  }
+}
+
+@mixin h-tablet{
+  @media (max-width: $tablet) and (orientation: landscape){
+    @content;
+  }
+}
+
+//769-992px
+@mixin laptop{
+  @media (max-width: $laptop){
+    @content;
+  }
+}
+
+//ie 10+
+@mixin ie{
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+    @content;
+  }
+}

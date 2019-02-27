@@ -1,0 +1,57 @@
+.navigation{
+  z-index: 999999;
+  position: fixed;
+  right: 4%;
+  top: 15%;
+
+  @include tablet{
+    display: none;
+  }
+}
+
+.onepage-pagination {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.onepage-pagination li{
+  padding-bottom: rem(15px);
+  @include ie{
+    list-style: none;
+  }
+}
+
+.onepage-pagination li a{
+  position: relative;
+  display: block;
+  @include circle(rem(6px), $light);
+  &::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @include circle(rem(16px), transparent);
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: $light;
+
+    opacity: 0;
+    transition: all $transition;
+  }
+}
+
+.onepage-pagination li{
+  &:hover{
+    .onepage-pagination li a::before{
+      opacity: 1;
+    }
+  }
+}
+
+.onepage-pagination li a.active:before{
+  opacity: 1;
+}

@@ -1,0 +1,113 @@
+.best{
+  background-color: $light;
+  background-image: url("../img/bg/bg-section2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.best__list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  @include phone{
+    flex-direction: column;
+  }
+  @include ie{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.best__item{
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 33.3%;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  @include phone{
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;
+  }
+  @include ie{
+    display: inline-block;
+    width: 30%;
+    margin: 0 auto;
+    vertical-align: top;
+    @include phone{
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+.best__icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: rem(35px);
+  @include ie{
+    display: none;
+  }
+}
+
+.best__icon-pic{
+  width: rem(90px);
+  height: rem(90px);
+  fill: black;
+}
+
+.best__icon-pic--meat{
+  fill: $svg-red;
+}
+
+.best__icon-pic--hand{
+  fill: $svg-yellow;
+}
+
+.best__icon-pic--natural{
+  fill: $svg-green;
+}
+
+.best__text{
+  @include phone{
+    padding-left: rem(20px);
+  }
+}
+
+.best__title{
+  font-family: $accent-font;
+  font-weight: normal;
+  font-size: rem(24px);
+  @include phone{
+    line-height: 1.2;
+  }
+}
+
+.best__description{
+  p{ 
+    padding: 0 rem(15px);
+
+    font-family: $main-font;
+    font-weight: 200;
+    font-size: rem(13px);
+    line-height: 1.7;
+    opacity: .8;
+
+    @include tablet{
+      font-size: rem(14px);
+    }
+    @include phone{
+      padding: 0;
+    }
+  }
+}

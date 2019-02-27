@@ -1,0 +1,370 @@
+.burgers {
+  background: linear-gradient(180deg, #f9b43b 0, #eb8c38 40%, #eb8c38 60%, #eb8c38 0, #f9b43b);
+}
+
+.burgers__container{
+  position: relative;
+  @include tablet{
+    width: 90%;
+  }
+}
+
+.burgers__list{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  @include phone{
+    width: 95%;
+  }
+}
+
+.burgers__item{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 0;
+
+  visibility: hidden;
+
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  opacity: 0;
+  transition: all $transition;
+  @include tablet{
+    flex-direction: column;
+    align-items: center;
+  }
+  @include ie{
+    display: block;
+    &::before, &::after{
+      clear: both;
+    }
+  }
+}
+
+.burgers__item--active{
+  visibility: visible;
+  z-index: 1;
+  opacity: 1;
+}
+
+.burgers__item--next{
+  transition: left 1s;
+}
+
+.burgers__img, .burgers__description{
+  flex-basis: 50%;
+  @include ie{
+    display: block;
+    width: 50%;
+    float: left;
+    @include tablet{
+      float: none;
+      width: 90%;
+      max-height: 40vh;
+    }
+  }
+}
+
+.burgers__img{
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  @include tablet{
+    align-self: center;
+  }
+  @include phone{
+    padding-top: 20%;
+  }
+  @include ie{
+    display: block;;
+  }
+}
+
+.burgers__pic{
+  max-width: 99%;
+  max-height: 100%;
+  @include ie{
+    @include tablet{
+      width: 50%;
+      margin-left: 25%;
+    }
+  }
+}
+
+.burgers__content{
+  cursor: pointer;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.content{
+  width: rem(90px);
+  height: rem(90px);
+  background-color: rgba(227, 80, 40, 0.4);
+  border-radius: $border-radius;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: background $transition;
+
+  &:hover{
+    background-color: rgba(227, 80, 40, 1);
+  }
+}
+
+.content__icon{
+  width: rem(46px);
+  height: rem(44px);
+  fill: $light;
+  @include ie{
+    display: none;
+  }
+}
+
+.content__title{
+  padding-top: rem(5px); 
+  font-family: "Gagalin";
+  font-weight: normal;
+  text-transform: uppercase;
+  color: $light;
+  text-align: center;
+}
+
+.content__hidden{
+  position: absolute;
+  left: 100%;
+  top: 0;
+
+  width: rem(270px);
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  background-color: rgba(255,255,255,.9);
+  border-radius: $border-radius;
+  opacity: 0;
+  transition: opacity $transition;
+}
+
+.content:hover{
+  .content__hidden{
+    opacity: 1;
+    height: rem(330px);
+    padding: rem(15px) rem(20px);
+  }
+}
+
+.content__list{
+  height: 100%;
+  width: 100%;
+}
+
+.content__pic{
+  @include ie{
+    display: none;
+  }
+}
+
+.content__pic--beef{
+  width: rem(45px);
+  height: rem(40px);
+}
+
+.content__pic--buns{
+  width: rem(40px);
+  height: rem(30px);
+}
+
+.content__pic--salad{
+  width: rem(40px);
+  height: rem(40px);
+}
+
+.content__pic--sauce{
+  width: rem(45px);
+  height: rem(45px);
+}
+
+.content__pic--cucumber{
+  width: rem(45px);
+  height: rem(40px);
+}
+
+.content__pic--cheese{
+  width: rem(45px);
+  height: rem(35px);
+}
+
+.content__pic--red{
+  fill: $svg-red;
+}
+.content__pic--green{
+  fill: $svg-green;
+}
+.content__pic--yellow{
+  fill: $svg-yellow;
+}
+
+.content__name{
+  font-weight: 500;
+}
+
+.content__quantity{
+  font-weight: 200;
+  text-align: right;
+}
+
+.burgers__kkal{
+  opacity: .5;
+
+  position: absolute;
+  left: 0;
+  top: 100%;
+  @include tablet{
+    top: 0;
+    left: 95%;
+    transform: translateX(-50%);
+  }
+  @include ie{
+    position: absolute;
+    left: 0;
+    top: rem(210px);
+    @include tablet{
+      top: 0;
+      left: 95%;
+    }
+  }
+}
+
+.kkal__icon{
+  width: rem(60px);
+  height: rem(60px);
+
+  position: relative;
+  @include ie{
+    background-color: $orange;
+    border-radius: 5px;
+  }
+}
+
+.kkal__pic{
+  fill: $light;
+  width: 100%;
+  height: 100%;
+}
+
+.kkal__number, .kkal__title{
+  font-family: "Gagalin";
+  font-weight: normal;
+  text-transform: uppercase;
+  color: $light;
+  text-align: center;
+}
+
+.kkal__number{
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+
+  font-size: rem(20px);
+  @include ie{
+    top: 20%;
+  }
+}
+
+.kkal__title{
+  @include ie{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.burgers__description{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  @include tablet{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  @include ie{
+    display: block;
+  }
+}
+
+.burgers__text{
+  margin-top: rem(30px);
+
+  font-weight: 200;
+  line-height: 1.7;
+  color: $light;
+}
+
+.burgers__title{
+  line-height: 1;
+}
+
+.burgers__order{
+  margin-top: rem(20px);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  @include tablet{
+    justify-content: center;
+  }
+}
+
+.burgers__price{
+  font-family: "Gagalin";
+  font-weight: normal;
+  font-size: rem(30px);
+  color: $orange;
+  line-height: 1;
+}
+
+.burgers__number{
+  font-size: rem(70px);
+}
+
+.burgers__button{
+  margin-left: rem(30px);
+  margin-bottom: rem(10px); //высота паддинга кнопки
+}
+
+.burgers__arrow{
+  position: absolute;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  cursor: pointer;
+}
+
+.burgers__arrow--left{
+  left: 0;
+  transform: translate(-100%, -50%) rotate(90deg);
+}
+
+.burgers__arrow--right{
+  right: 0;
+  transform: translate(100%, -50%) rotate(-90deg);
+}
